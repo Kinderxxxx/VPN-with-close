@@ -61,3 +61,4 @@
   заполните `panel_ip` и `firewall_panel_ports`.
 - Значения тюнинга ядра в `templates/99-vpn-tuning.conf.j2` рассчитаны на сервер с 2+ ГБ RAM;
   на очень маленьких VPS их можно уменьшить.
+# VPN-with-close
