@@ -1,0 +1,18 @@
+# Скопируйте в inventory.ini и подставьте реальные IP.
+# Адреса ниже - заглушки из диапазона для документации.
+
+[entry]
+entry-kz-1 ansible_host=203.0.113.10
+
+[exit]
+exit-fi-1 ansible_host=203.0.113.20
+
+[nodes:children]
+entry
+exit
+
+[nodes:vars]
+# Первый запуск - под root (или под пользователем, которого выдал хостер: ubuntu / debian).
+# После SSH-хардинга root отключается: поменяйте на admin_user из group_vars/all.yml.
+ansible_user=root
+ansible_python_interpreter=/usr/bin/python3

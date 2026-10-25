@@ -1,0 +1,24 @@
+---
+# ---------- Доступ ----------
+admin_user: opsadmin
+# Содержимое вашего публичного ключа: cat ~/.ssh/id_ed25519.pub
+admin_ssh_pubkey: "REPLACE_ME_WITH_YOUR_PUBLIC_KEY"
+
+# IP, которые fail2ban никогда не банит (добавьте свой домашний/офисный IP)
+fail2ban_ignore_ips:
+  - 127.0.0.1/8
+
+# ---------- Файрвол (UFW) ----------
+# Порты, открытые всем: клиентские порты VPN. Уточним после выбора протоколов.
+firewall_public_ports:
+  - { port: 443, proto: tcp }
+  - { port: 443, proto: udp }
+
+# Порты управления нодой, открытые ТОЛЬКО для IP панели.
+# Заполним после развёртывания панели.
+panel_ip: ""
+firewall_panel_ports: []
+
+# ---------- Система ----------
+timezone: UTC
+install_docker: true

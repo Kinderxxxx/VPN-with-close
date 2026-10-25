@@ -1,0 +1,30 @@
+# Управляется Ansible. Не править вручную.
+
+# --- Управление перегрузкой: BBR + fq ---
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+
+# --- Очереди соединений (много одновременных клиентов) ---
+net.core.somaxconn = 65535
+net.core.netdev_max_backlog = 16384
+net.ipv4.tcp_max_syn_backlog = 16384
+
+# --- Буферы (важны для UDP-протоколов вроде Hysteria2 и для длинных каналов) ---
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.ipv4.tcp_rmem = 4096 87380 16777216
+net.ipv4.tcp_wmem = 4096 65536 16777216
+
+# --- Прочее для прокси-нагрузки ---
+net.ipv4.tcp_fastopen = 3
+net.ipv4.tcp_mtu_probing = 1
+net.ipv4.tcp_slow_start_after_idle = 0
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.ip_local_port_range = 10240 65535
+
+# --- Пересылка пакетов (понадобится для WireGuard/AmneziaWG; для Xray безвредна) ---
+net.ipv4.ip_forward = 1
+
+# --- Дескрипторы и таблица соединений ---
+fs.file-max = 2097152
+net.netfilter.nf_conntrack_max = 262144

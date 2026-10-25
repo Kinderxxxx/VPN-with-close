@@ -1,0 +1,13 @@
+# Управляется Ansible. Не править вручную.
+# Имя файла начинается с 00-: в sshd первое найденное значение побеждает,
+# поэтому наш файл должен идти раньше 50-cloud-init.conf и подобных.
+PermitRootLogin no
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+PubkeyAuthentication yes
+AllowUsers {{ admin_user }}
+MaxAuthTries 3
+LoginGraceTime 30
+X11Forwarding no
+ClientAliveInterval 300
+ClientAliveCountMax 2
